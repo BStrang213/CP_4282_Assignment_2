@@ -65,6 +65,7 @@ class MainActivity : ComponentActivity(), View.OnClickListener {
         } else if (player2 >= 96) {
             println("$player2name wins!")
         }
+        textviewc.text = "Here is your role $player1 & $player2"
     }
 }
 
