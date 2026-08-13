@@ -4,21 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import android.widget.TextView
 import android.widget.Button
-import android.widget.EditText
 import android.view.View
-//import androidx.activity.compose.setContent
-//import androidx.activity.enableEdgeToEdge
-//import androidx.compose.foundation.layout.fillMaxSize
-//import androidx.compose.foundation.layout.padding
-//import androidx.compose.material3.Scaffold
-//import androidx.compose.material3.Text
-//import androidx.compose.runtime.Composable
-//import androidx.compose.ui.Modifier
-//import androidx.compose.ui.tooling.preview.Preview
-//import com.example.cp_4282.ui.theme.CP_4282Theme
 
 class MainActivity : ComponentActivity(), View.OnClickListener {
-    override  fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.assignment_2)
         val button1: Button = findViewById(R.id.button)
@@ -26,78 +15,60 @@ class MainActivity : ComponentActivity(), View.OnClickListener {
 
     }
 
-    fun player1Dice(dice: List<Int>): Int {
-        val diceRole = dice.random()
-        return diceRole
-    }
-
-    fun player2Dice(dice: List<Int>): Int {
-        val diceRole = dice.random()
-        return diceRole
-    }
-
     override fun onClick(v: View?) {
-        val textviewc: TextView = findViewById(R.id.textView4)
-        val dice = listOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)
-        var player1: Int = 0
-        var player1Dice = mutableListOf<Int>()
-        var player2: Int = 0
-        var player2Dice = mutableListOf<Int>()
-        println("What is player 1's name?")
-        val player1Name = readln()
-        println("What is player 2's name?")
-        val player2name = readln()
-
-        do {
-            val p1Dice = player1Dice(dice)
-            val p2Dice = player2Dice(dice)
-            player1 += p1Dice
-            player1Dice.add(p1Dice)
-            player2 += p2Dice
-            player2Dice.add(p2Dice)
-        } while ((player1 < 96) && (player2 < 96))
-        println("$player1Name's dice $player1Dice Totaling $player1")
-        println("$player2name's dice $player2Dice Totaling $player2")
-        if ((player1 >= 96) && (player2 >= 96)){
-            println("Its a Tie!")
-        } else if (player1 >= 96) {
-            println("$player1Name wins!")
-        } else if (player2 >= 96) {
-            println("$player2name wins!")
+        val dice = Dice()
+        val player = Player()
+        val dice1: TextView = findViewById(R.id.diceValue)
+        val player1: TextView = findViewById(R.id.player1Total)
+        val player2: TextView = findViewById(R.id.player2Total)
+        val win: TextView = findViewById(R.id.win)
+        val p1Dice = dice.player1Dice()
+        val p2Dice = dice.player2Dice()
+        dice1.text
+        dice.player1 += p1Dice
+        dice.player1DiceList.add(p1Dice)
+        dice.player2 += p2Dice
+        dice.player2DiceList.add(p2Dice)
+        player1.text = ("${player.player1()}'s dice ${dice.player1DiceList} Totaling ${dice.player1}")
+        player2.text = ("${player.player2()}'s dice ${dice.player2DiceList} Totaling ${dice.player2}")
+        if ((dice.player1 >= 96) && (dice.player2 >= 96)){
+            win.text = ("Its a Tie!")
+        } else if (dice.player1 >= 96) {
+            win.text = ("${player.player1()} wins!")
+        } else if (dice.player2 >= 96) {
+            win.text = ("${player.player2()} wins!")
         }
-        textviewc.text = "Here is your role $player1 & $player2"
+    }
+
+class Dice() {
+    val dice = listOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16)
+    var player1: Int = 0
+    var player1DiceList = mutableListOf<Int>()
+    var player2: Int = 0
+    var player2DiceList = mutableListOf<Int>()
+
+    fun player1Dice(): Int {
+        val p1DiceRole = dice.random()
+        return p1DiceRole
+    }
+
+    fun player2Dice(): Int {
+        val p2DiceRole = dice.random()
+        return p2DiceRole
     }
 }
 
-//class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-//        setContent {
-//            CP_4282Theme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                }
-//            }
-//        }
-//    }
-//}
-//
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    Text(
-//        text = "Hello $name!",
-//        modifier = modifier
-//    )
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    CP_4282Theme {
-//        Greeting("Android")
-//    }
-//}
+class Player() {
+    fun player1(): String {
+        println("What is player 1's name?")
+        val player1Name = readln()
+        return player1Name
+    }
+
+    fun player2(): String {
+        println("What is player 2's name?")
+        val player2name = readln()
+        return player2name
+    }
+}
+}

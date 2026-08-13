@@ -48,11 +48,38 @@
         android:fontFamily="sans-serif"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/diceValue"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center"
         android:text="Dice value"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/player1Total"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="Player One's Value:"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/player2Total"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="Player Two's Value:"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/win"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="Results!!!"
         android:textSize="18sp"
         android:fontFamily="sans-serif"/>
 
