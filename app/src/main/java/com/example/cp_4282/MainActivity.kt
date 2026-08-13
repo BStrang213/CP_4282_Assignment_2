@@ -17,26 +17,28 @@ class MainActivity : ComponentActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         val dice = Dice()
-        val player = Player()
+        //val player = Player()
         val dice1: TextView = findViewById(R.id.diceValue)
         val player1: TextView = findViewById(R.id.player1Total)
         val player2: TextView = findViewById(R.id.player2Total)
         val win: TextView = findViewById(R.id.win)
-        val p1Dice = dice.player1Dice()
-        val p2Dice = dice.player2Dice()
-        dice1.text
-        dice.player1 += p1Dice
-        dice.player1DiceList.add(p1Dice)
-        dice.player2 += p2Dice
-        dice.player2DiceList.add(p2Dice)
-        player1.text = ("${player.player1()}'s dice ${dice.player1DiceList} Totaling ${dice.player1}")
-        player2.text = ("${player.player2()}'s dice ${dice.player2DiceList} Totaling ${dice.player2}")
+        do{
+            val p1Dice = dice.player1Dice()
+            val p2Dice = dice.player2Dice()
+            dice1.text
+            dice.player1 += p1Dice
+            dice.player1DiceList.add(p1Dice)
+            dice.player2 += p2Dice
+            dice.player2DiceList.add(p2Dice)
+        } while ((dice.player1 < 96) && (dice.player2 < 96))
+        player1.text = ("Louis's dice ${dice.player1DiceList} Totaling ${dice.player1}")
+        player2.text = ("Bradley's dice ${dice.player2DiceList} Totaling ${dice.player2}")
         if ((dice.player1 >= 96) && (dice.player2 >= 96)){
             win.text = ("Its a Tie!")
         } else if (dice.player1 >= 96) {
-            win.text = ("${player.player1()} wins!")
+            win.text = ("Louis wins!")
         } else if (dice.player2 >= 96) {
-            win.text = ("${player.player2()} wins!")
+            win.text = ("Bradley wins!")
         }
     }
 
@@ -58,17 +60,17 @@ class Dice() {
     }
 }
 
-class Player() {
-    fun player1(): String {
-        println("What is player 1's name?")
-        val player1Name = readln()
-        return player1Name
-    }
-
-    fun player2(): String {
-        println("What is player 2's name?")
-        val player2name = readln()
-        return player2name
-    }
-}
+//class Player() {
+//    fun player1(): String {
+//        println("What is player 1's name?")
+//        val player1Name = readln()
+//        return player1Name
+//    }
+//
+//    fun player2(): String {
+//        println("What is player 2's name?")
+//        val player2name = readln()
+//        return player2name
+//    }
+//}
 }
