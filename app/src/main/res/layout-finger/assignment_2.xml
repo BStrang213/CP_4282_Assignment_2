@@ -15,16 +15,38 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="This is the dice game!"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"/>
+
+    <EditText
+        android:id="@+id/player1Name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Please enter player one's name(Delete this first)"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif"/>
+
+    <EditText
+        android:id="@+id/player2Name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Please enter player two's name(Delete this first)"
         android:textSize="18sp"
         android:fontFamily="sans-serif"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="Needed score to win is 96"
         android:textSize="18sp"
@@ -33,7 +55,7 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="press the button to roll the dice"
         android:textSize="18sp"
@@ -50,7 +72,7 @@
     <TextView
         android:id="@+id/diceValue"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="Dice value"
         android:textSize="18sp"
@@ -59,7 +81,7 @@
     <TextView
         android:id="@+id/player1Total"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="Player One's Value:"
         android:textSize="18sp"
@@ -68,7 +90,7 @@
     <TextView
         android:id="@+id/player2Total"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="Player Two's Value:"
         android:textSize="18sp"
@@ -77,7 +99,7 @@
     <TextView
         android:id="@+id/win"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="Results!!!"
         android:textSize="18sp"
